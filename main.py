@@ -5,6 +5,8 @@ import time
 from collections.abc import Callable
 
 # http://www.kfish.org/boids/pseudocode.html
+# https://gist.github.com/laundmo/b224b1f4c8ef6ca5fe47e132c8deab56
+# https://blog-a93.pages.dev/blog/boids
 
 # Constantes
 
@@ -286,7 +288,7 @@ def update_radio_buttons():
         if pyxel.btnr(pyxel.MOUSE_BUTTON_LEFT):
             distance = length(pyxel.mouse_x - pos, pyxel.mouse_y - y_pos)
 
-            if distance < 5:
+            if distance <= RADIO_BUTTON_RADIUS:
                 selected_edge_behaviour = i
                 break
 
@@ -359,7 +361,7 @@ def draw_sliders(content_pos: Vec):
     
 def draw_radio_buttons(content_pos: Vec):
     """Affiche le groupe de boutons permettant de choisir le comportement aux bords de l'écran"""
-    radius = 4
+    radius = RADIO_BUTTON_RADIUS
     for i in range(len(edge_behaviours)):
         name = edge_behaviours[i]
         y_pos = content_pos[1] + RADIO_BUTTONS_Y_OFFSET + i * RADIO_BUTTONS_GAP
@@ -395,7 +397,6 @@ def draw():
     # Affiche le bouton de basculement de visibilité du panneau de l'interface utilisateur
     pyxel.rectb(content_x_pos + toggle_button[0], toggle_button[1], toggle_button[2], toggle_button[3], 5 if toggle_button[4] else 4)
     pyxel.rect(content_x_pos + toggle_button[0] + 1, toggle_button[1] + 1, toggle_button[2] - 2, toggle_button[3] - 2, 6 if toggle_button[4] else 5)
-    # pyxel.text(content_x_pos + UI_MARGIN + PANEL_WIDTH + 4 + 2, UI_MARGIN + 2, toggle_button[4], 1)
     pyxel.blt(content_x_pos + UI_MARGIN + PANEL_WIDTH + 4 + 2, UI_MARGIN + 2, 0, 8, 0, 13, 13, 0)
 
     
@@ -456,7 +457,6 @@ def update_boids_count(new_count):
         boids = boids[:int(new_count)]
 
     NB_BOIDS = new_count
-
 
 # Programme principal
 
