@@ -357,7 +357,7 @@ def draw_sliders(content_pos: Vec):
 
         # Affcihe le curseur du slider
         handle_color = 4 if slider["dragged"] else 3 if slider["hovered"] else 2
-        pyxel.rect(content_pos[0] + math.floor(slider["width"] * slider["value"]) - 2, y_pos - 2, 5, 5, handle_color)
+        pyxel.rect(content_pos[0] + pyxel.floor(slider["width"] * slider["value"]) - 2, y_pos - 2, 5, 5, handle_color)
     
 def draw_radio_buttons(content_pos: Vec):
     """Affiche le groupe de boutons permettant de choisir le comportement aux bords de l'écran"""
@@ -386,10 +386,15 @@ def draw():
     """Boucle principale de rendu appelée à chaque frame"""
     global start_time, counter, fps, ui_progress
 
+    # Affiche le fond
     pyxel.rect(0, 256, WIDTH, HEIGHT - 256, 6)
     pyxel.blt(0, 0, 1, 0, 0, 256, 256, 0)
     pyxel.blt(256, 0, 1, 0, 0, 256, 256, 0)
+
+    # Affiche la lune
     pyxel.blt(120, 30, 0, 21, 0, 40, 44, 0)
+
+    # Affiche les étoiles
     pyxel.blt(50, 80, 0, 61, 0, 8, 10, 0)
     pyxel.blt(300, 25, 0, 69, 0, 15, 15, 0)
 
@@ -406,7 +411,6 @@ def draw():
     pyxel.rect(content_x_pos + toggle_button[0] + 1, toggle_button[1] + 1, toggle_button[2] - 2, toggle_button[3] - 2, 6 if toggle_button[4] else 5)
     pyxel.blt(content_x_pos + UI_MARGIN + PANEL_WIDTH + 4 + 2, UI_MARGIN + 2, 0, 8, 0, 13, 13, 0)
 
-    
     # Affiche le curseur
     pyxel.blt(pyxel.mouse_x, pyxel.mouse_y, 0, 0, 0, 8, 8, 0)
 
@@ -497,6 +501,7 @@ edge_behaviours = [
     "Revenir"
 ]
 selected_edge_behaviour = 2
+
 
 init_boids()
 pyxel.init(WIDTH, HEIGHT)
