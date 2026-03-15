@@ -502,7 +502,6 @@ edge_behaviours = [
 ]
 selected_edge_behaviour = 2
 
-
 init_boids()
 pyxel.init(WIDTH, HEIGHT)
 pyxel.load("res.pyxres")
