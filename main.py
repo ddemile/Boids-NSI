@@ -333,7 +333,7 @@ def draw_boids():
     scale_factor_x, scale_factor_y = WIDTH / SIMULATION_WIDTH, HEIGHT / SIMULATION_HEIGHT
     for b in boids:
         x, y = int(b[0] * scale_factor_x), int(b[1] * scale_factor_y)
-        pyxel.rect(x, y, scale_factor_x, scale_factor_y, 7)
+        pyxel.rect(x, y, scale_factor_x, scale_factor_y, 1)
 
 def draw_sliders(content_pos: Vec):
     """Affiche les sliders ainsi que leur étiquette"""
@@ -385,6 +385,13 @@ def draw_ui(pos: Vec):
 def draw():
     """Boucle principale de rendu appelée à chaque frame"""
     global start_time, counter, fps, ui_progress
+
+    pyxel.rect(0, 256, WIDTH, HEIGHT - 256, 6)
+    pyxel.blt(0, 0, 1, 0, 0, 256, 256, 0)
+    pyxel.blt(256, 0, 1, 0, 0, 256, 256, 0)
+    pyxel.blt(120, 30, 0, 21, 0, 40, 44, 0)
+    pyxel.blt(50, 80, 0, 61, 0, 8, 10, 0)
+    pyxel.blt(300, 25, 0, 69, 0, 15, 15, 0)
 
     draw_boids()
 
