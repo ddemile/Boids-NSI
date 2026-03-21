@@ -12,17 +12,17 @@ from collections.abc import Callable
 
 WIDTH = 512
 HEIGHT = 300
-NB_BOIDS = 600
+NB_BOIDS = 550
 
 SIMULATION_WIDTH = WIDTH / 2
 SIMULATION_HEIGHT = HEIGHT / 2
 
 MAX_SPEED = 1.5
-VISION = 12
+VISION = 14
 
-COHESION_FACTOR = 1
-SEPARATION_FACTOR = 1
-ALIGNMENT_FACTOR = 1
+COHESION_FACTOR = 1.5
+SEPARATION_FACTOR = 1.2
+ALIGNMENT_FACTOR = 1.4
 
 UI_MARGIN = 4
 PANEL_PADDING = 5
@@ -121,11 +121,12 @@ def get_neighbours(b1: Boid, boids: list[Boid], grid: dict[tuple[int, int], list
         for dy in (-1, 0, 1):
             for i in grid.get((cx + dx, cy + dy), []):
                 b2 = boids[i]
-                if b1 != b2:
-                    squared_distance = (b1[0] - b2[0]) ** 2 + (b1[1] - b2[1]) ** 2
-                    if squared_distance < squared_radius:
-                        neighbours.append(b2)
-                        squared_distances.append(squared_distance)
+                if b1 is b2:
+                    continue
+                squared_distance = (b1[0] - b2[0]) ** 2 + (b1[1] - b2[1]) ** 2
+                if squared_distance < squared_radius:
+                    neighbours.append(b2)
+                    squared_distances.append(squared_distance)
     return neighbours, squared_distances
 
 # Règles
@@ -225,27 +226,20 @@ def update_boids():
         neighbours, squared_distances = get_neighbours(boid, boids, grid, VISION, int(VISION / 2))
 
         cohesion, separation, alignment = apply_rules(boid, neighbours, squared_distances)
-        
-        mouse = (pyxel.mouse_x - boid[0], pyxel.mouse_y - boid[1])
-        mouse = normalize(mouse)
 
         cohesion = mutliply(cohesion, COHESION_FACTOR)
         separation = mutliply(separation, SEPARATION_FACTOR)
         alignment = mutliply(alignment, ALIGNMENT_FACTOR)
-        mouse = mutliply(mouse, 0)
 
-        vx = cohesion[0] + separation[0] + alignment[0] + mouse[0]
-        vy = cohesion[1] + separation[1] + alignment[1] + mouse[1]
+        vx = cohesion[0] + separation[0] + alignment[0]
+        vy = cohesion[1] + separation[1] + alignment[1]
 
         if selected_edge_behaviour == 2:
             bound_force = bound(boid)
             vx += bound_force[0]
             vy += bound_force[1]
         
-        boid[2] += vx
-        boid[3] += vy
-
-        vx, vy = limit_velocity((boid[2], boid[3]))
+        vx, vy = limit_velocity((boid[2] + vx, boid[3] + vy))
         
         boid[2] = vx
         boid[3] = vy
