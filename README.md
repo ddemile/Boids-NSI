@@ -14,5 +14,5 @@ pip install -r requirements.txt
 ```
 2. Exécuter le fichier d'entrée
 ```bash
-py sources/main.py
+python sources/main.py
 ```
