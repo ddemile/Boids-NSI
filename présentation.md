@@ -10,7 +10,7 @@ Les boids suivent trois règles :
 
 ## 3. Pourquoi ce projet ?
 Lorsque que l'on a découvert le thème *Nature & Informatique*, on s'est souvenus de quelque chose dont notre professeur de NSI nous avait parlé, les Boids.
-C'est donc comme ça **Boids Simulator** est né.
+C'est donc comme ça que **Bird's Night** est né.
 
 ## 4. La phase de recherches
 Pour pouvoir mener à bien ce projet, il a fallu rechercher comment peuvent être implémenter en code, on est tombé sur un [article génial](http://www.kfish.org/boids/pseudocode.html) qui expliquait exactement cela, on s'est également aidés d'un autre [article](https://blog-a93.pages.dev/blog/boids).
