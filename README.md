@@ -1,9 +1,9 @@
 <h1 align="center">
     <img src="logo-12x.png" alt="logo"><br>
-    Boids Simulator
+    Bird's Night
 </h1>
 
-**Boids Simulator** est une simulation de boids (bird-oid) avec plein de paramètres à modifier, elle a été réalisée avec le module [pyxel](https://github.com/kitao/pyxel).
+**Bird's Night** est une simulation de boids (bird-oid) avec plein de paramètres à modifier, elle a été réalisée avec le module [pyxel](https://github.com/kitao/pyxel).
 
 Le fonctionnement ainsi que les étapes de réalisation sont disponibles dans [ce document](/présentation.md).
 
