@@ -1,6 +1,6 @@
 <h1 align="center">
     <img src="logo-12x.png" alt="logo"><br>
-    Boids's Night
+    Boid's Night
 </h1>
 
 **Boid's Night** est une simulation de boids (bird-oid) avec plein de paramètres à modifier, elle a été réalisée avec le module [pyxel](https://github.com/kitao/pyxel).
