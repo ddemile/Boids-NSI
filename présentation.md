@@ -1,4 +1,4 @@
-# Boids's Night
+# Boid's Night
 ## 1. C'est quoi une simulation de boids
 Une simulation de boids, contraction de bird-oid (qui a la forme d'un oiseau), permet de simuler le comportement d'une nuée d'oiseaux en vol.
 
