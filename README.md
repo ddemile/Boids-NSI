@@ -36,7 +36,6 @@ python sources/main.py
 - **DAROUECHI Ashima** - Elève
 - **DIOT Eloïse** - Elève
 - **WATANABE Romain** - Elève
-- **M. Etheve** - Professeur de NSI
 
 ## License
 Ce projet est sous licence GNU - voir le fichier [license.txt](/license.txt) pour plus d'informations.
