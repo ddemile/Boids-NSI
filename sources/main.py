@@ -380,7 +380,7 @@ def draw():
     """Boucle principale de rendu appelée à chaque frame"""
     global start_time, counter, fps, ui_progress
 
-    # Affiche le fond
+    # Affiche l'arrière-plan
     pyxel.rect(0, 256, WIDTH, HEIGHT - 256, 6)
     pyxel.blt(0, 0, 1, 0, 0, 256, 256, 0)
     pyxel.blt(256, 0, 1, 0, 0, 256, 256, 0)
